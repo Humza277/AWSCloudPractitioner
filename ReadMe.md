@@ -364,24 +364,58 @@ Can be tracked at the monthly, quarterly, or yearly levels, with customizable st
 Alerts support EC2, RDS, Redshift, and ElastiCache reservation
 Budget based on a fixed cost or plan your upfront based on your chosen level 
 Can be easily managed from the Budget Dashboard or via the Budgets API
-Get notified by providing an email or Chatbot and threshhold how close to the current or forecasted budget
+Get notified by providing an email or Chatbot and threshold how close to the current or forecasted budget
 
 # TCO Calculator 
 
 The total Cost of Ownership allows you to estimate how much you would save when moving to AWS from on-premise
-Provides you a detailed set of reports that can be used in executive presenations 
+Provides you a detailed set of reports that can be used in executive presentations 
 The tool is built on underlying calculation models that generate fair assessment of value that you can achieve given the data provided
 This TCO helps by reducing the need to invest in large capital expenditures
 The tool is for approximation only 
 
 # AWS Landing Zone
 
-Helps Enterprises quicly set-up a secure, AWS multi-account
-Provides you with a baseline environment to get 
+Helps Enterprises quickly set-up a secure, AWS multi-account
+Provides you with a baseline environment to get started with a multi-account architecture
 
+AWS Account Vending Machine 
+Automatically provisions and configure new accounts via landing zones - Service Catalog Template
+Uses Single Sign-on for managing and accessing accounts
+The environment is customizable to allow customers to implement their own account baselines through a Landing Zone configuration and update pipeline
 
+# Resource groups and Tagging
 
+Tags are words or phrases that act as metadata for organizing your AWS resources 
+Resource Groups are a collection of resources that share one or more tags
 
+Helps you organize and consolidate information based on your project and the resources that you use
+Resource Groups can display details about a group of resources based on 
+    
+    Metrics
+    Alarms 
+    Configuration Settings
+
+At any time you can modify the settings of your resource groups to change what resources appear 
+
+# AWS Quick Start 
+
+Prebuilt templates by AWS and AWS Partners to help you deploy popular stacks on AWS 
+Reduce hundreds of manual procedures into just a few steps 
+
+A Quick Start is composed of 3 parts 
+    
+    A reference architecture for the deployment 
+    AWS CloudFormation templates that automate and configure the deployment 
+    A deployment guide explaining the architecture and implementation in detail 
+
+Most QuickStart reference deployments enable you to spin up a fully functional architecture in less than an hour 
+
+# Cost and Usage Report 
+
+Generate a detailed spreadsheet, enabling you to better analyze and understand your AWS costs
+
+Places the reports into S3 Bucket -> Use Athena to turn the report into a queryable database -> Use Quick Sight to visualize your billing data as graphs 
 
 
 
