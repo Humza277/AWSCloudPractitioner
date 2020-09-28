@@ -417,6 +417,245 @@ Generate a detailed spreadsheet, enabling you to better analyze and understand y
 
 Places the reports into S3 Bucket -> Use Athena to turn the report into a queryable database -> Use Quick Sight to visualize your billing data as graphs 
 
+# Organizations and Accounts
+
+Organizations -> allow you to centrally manage billing, control access, compliance, security, and share resources across your AWS accounts
+
+Root Account User -> Is a single-sign in identity that has complete access to all AWS services and resources in an account -> Each account has a Root Account User
+
+Organization Units -> are a group of AWS accounts within an organization which can also contain other organizational units -> creating a hierarchy
+
+Service Control Policies -> give central control over the allowed permissions for all accounts in your organization, helping to ensure your account stay within your organizations guidelines 
+
+
+
+# Networking 
+
+Region - The geographical location of your network 
+
+AZ - the datacenter of your AWS resources
+
+VPC - a logically isolated section of the AWS CLoud where you can launch AWS resources
+
+Internet Gateway - Enable access to the internet 
+
+Route Table - determines where network traffic from your subnets are directed 
+
+NACLs - Acts as a firewall at the subnet level 
+
+Security groups - Act as a firewall at the instance level 
+
+Subnets - a logical partition og an IP network into multiple, smaller network segments 
+
+
+# Database Services
+
+DynamoDB - NoSQL - key/value database -> Cassandra
+
+DocumentDB - NoSQL -Document database that is MongoDB compatible -> MongoDB
+
+RDS - Relational Database Service that supports multiple engines -> MySQL, Postgres, Maria DB, Oracle, Microsoft SQL Server, Aurora 
+    Aurora - MySQL (5x faster) and PSQL (3x faster) database -> fully managed
+    Aurora Serverless -only runs when you need it, like AWS Lambda
+
+Neptune - Managed Graph Database
+
+Redshift - Columner database, petabyte warehouse 
+
+ElastiCache - Redis or Memcached database 
+
+#Provisioning 
+
+Provisioning - the allocation/creation of resources and services to a customer 
+
+Elastic Beanstalk - service for deploying and scaling web applications and services developed with Java, .NET, PHP, Node.js, Python, Ruby, Go and Docker
+
+OpsWorks - configuration management service that provides managed instances of Chef and Puppet 
+
+CloudFormation - infrastructure as code, JSON or YAML
+
+AWS QuickStart - premade packages that can launch and configure your AWS compute, network , storage and other services required to deploy a workload on AWS 
+
+AWS MarketPlace - a digital catalogue of thousands of software listings from independent software vendors you can use to find, buy, test and deploy software 
+
+
+# Computing Services 
+
+EC2 - Elastic Compute Cloud - highly configurable server
+
+ECS - Elastic Container Service - Docker as a Service - Highly scalable - high-performance container orchestration service that supports Docker containers - have to pay for EC2 instances
+
+Fargate - Microservice where you don't think about the infrastructure - pay per task 
+
+EKS - Kubernetes as a Service - easy to deploy, manage and scale containerized applications using Kubernetes 
+
+Lambda - serverless functions - run code without provisioning or managing servers - You pay only for the compute time you consume
+
+Elastic Beanstalk - Orchestrates various AWS services - EC2, S3, Simple Notification Service, CloudWatch, Autoscaling, ELBs
+
+AWS Batch - Plans, schedules and executes your batch computing workloads across the full range of AWS compute services and features like EC2 and Spot Instances 
+
+# Storage Services 
+
+S3 - Simple Storage Service - Object storage 
+
+S3 Glacier - low cost storage - archiving and long-term backup 
+
+Storage Gateway - hybrid cloud storage with local caching - File Gateway - Volume Gateway - Tape Gateway 
+
+EBS - Elastic Block Storage - Hard drive in the cloud you attach to EC2 instances 
+
+EFS - Elastic File Storage - file storage mountable to multiple EC2 instances at the same time 
+
+Snowball - Physically migrate lots of data via a computer suitcase - 50, 80 TBs of space 
+
+Snowball Edge - 100TB version 
+
+Snow mobile - shipping container, pulled by a semi-trailer truck - 100PB 
+
+# Business Centric Services 
+
+Amazon Connect - Call Center - Cloud-based call center service you can setup in just a few clicks - based on the same proven system used by the Amazon customer service teams
+
+WorkSpaces - Virtual Remote Desktop - Secure managed service for provisioning either Windows or Linux desktops in just a few minutes which quickly scales up to thousands of desktops
+
+WorkDocs - A content creation and collaboration service - easily create, edit and share content saved centrally in AWS - AWS version of Sharepoint
+
+Chime - AWS Platform for online meetings, video conferencing and business calling which elastically scales to meet your capacity needs 
+
+WorkMail - Managed business email, contacts and calender service with support for existing desktop and mobile email client applications (IMAP)
+
+Pinpoint - Marketing campaign management system you can use for sending targeted email, SMS, push notifications, and voice messages
+
+SES - Simple Email Service - Cloud-based email sending service designed for marketers and application developers to send marketing, notification, and emails
+
+Quicksight - A business Intelligence (BI) service - Connect multiple datasources and quickly visualise data in the form of graphs with little to no programming knowledge 
+
+# Enterprise Integration 
+
+GOING HYBRID
+
+Direct Connect dedicated Gigabit network connection from your premise to AWS - Imagine having a direct fibre optic cable running straight to AWS 
+
+VPN - establish a secure connection to your AWS network 
+    
+    Site to site VPN - Connecting your on-premise to your AWS network 
+    Client VPN - Connecting a Client to your AWS network 
+    
+Storage Gateway - A hybrid storage service that enables your on-premises applications to use AWS cloud storage - You can use this for backup and archiving, disaster recovery, cloud data processing, storage tiering and migration
+
+Active Directory - The AWS Directory Service for Microsoft Active Directory also known as AWS Managed Mircosoft AD - enables your directory-aware workloads and AWS resources to use managed Active Directory in the AWS Cloud 
+
+# Logging Services 
+
+CloudTrail - logs all API calls - between AWS services 
+    
+    Who created the bucket - Detect developer misconfigurations
+    Who spun up that expensive EC2 instance - Detect malicious actors
+    Who launched this SageMaker Notebook - Automate responses 
+    
+CloudWatch - is a collection of multiple services
+
+CloudWatch logs - Performance data about AWS Service - Application Logs (Nginx) - Lambda Logs 
+
+CloudWatch Metrics - Represents a time-ordered set of data points - A variable to monitor 
+
+CloudWatch Events - Trigger an event based on condition - every hour take snapshot of server 
+
+CloudWatch Alarms - triggers notifications based on metrics
+
+CloudWatch Dashboard - create visualization based on metrics 
+
+# Shared Responsibility Model 
+
+Customers are responsible for security in the Cloud 
+
+AWS is responsible for security of the cloud 
+
+# AWS Compliance Programs 
+
+A set of internal policies and procedures of a company to comply with laws, rules and regulations or to uphold business reputation 
+
+# AWS Artifact 
+
+No cost, self-service portal for on-demand access to AWS compliance reports 
+On-demand access to AWS security and compliance reports and select online agreements 
+These checks are based on global compliance frameworks 
+
+# Amazon Inspector 
+
+Hardening - The act of eliminating as many security risks as possible 
+
+AWS Inspector runs a security benchmark against specific EC2 Instances - You can run a variety of security benchmarks
+
+Can perform both Network and Host Assessments
+    
+    Install the AWS agent on your EC2 Instances
+    Run an assessment for your assessment target 
+    Review your findings and remediate security issues 
+
+
+# AWS WAF
+
+AWS Web Application Firewall protect your web applications from common web exploits 
+
+Write your own rules to Allow or Deny traffic based on the contents of an HTTP requests
+
+Use a ruleset from a trusted AWS Security Partner in the AWS WAF Rules Marketplace 
+
+WAF can be attached to either CloudFronts or an Application Load Balancer 
+
+Protect web applications from attacks covered in the OWASP Top 10 - most dangerous attacks:
+
+Injection - Broken Authentication - Sensitive data exposure - XML External Entities - Broken Access control
+Security misconfigurations - Cross site scripting - Insecure deserialization - Using components with known vulnerabilities - insufficient logging and monitoring 
+
+# AWS Shield 
+
+AWS Shield is managed DDos protection service that safeguards applications running on AWS 
+
+DDoS - A malicious attempt to disrupt normal traffic by flooding a website a larger amount of fake traffic 
+
+All AWS customers benefit from the automatic protections of AWS Shield Standard, at no additional charge 
+
+When you route your traffic through Route53 or CloudFront you are using AWS Shield Standard 
+
+Protects you against Layer 3, 4 and 7 attacks - 7 application - 4 Transport - 3 Network 
+
+Shield Standard - Free 
+For protection against most common DDoS attacks, and access to tools and best practices to build a DDoS resilient architecture 
+Automatically available on all AWS services 
+
+Shield Advanced - $3000 a year 
+For additional protection against larger and more sophisticated attacks, visibility into attacks and 24x7 access to DDoS experts for complex cases 
+
+Available on 
+Route 53 - CloudFront - Elastic Load Balancing - AWS Global Accelerator - Elastic IP 
+
+# Penetration Testing 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
