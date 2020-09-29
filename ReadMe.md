@@ -607,69 +607,239 @@ WAF can be attached to either CloudFronts or an Application Load Balancer
 
 Protect web applications from attacks covered in the OWASP Top 10 - most dangerous attacks:
 
-Injection - Broken Authentication - Sensitive data exposure - XML External Entities - Broken Access control
-Security misconfigurations - Cross site scripting - Insecure deserialization - Using components with known vulnerabilities - insufficient logging and monitoring 
+    Injection - Broken Authentication - Sensitive data exposure - XML External Entities - Broken Access control
+    Security misconfigurations - Cross site scripting - Insecure deserialization - Using components with known vulnerabilities - insufficient logging and monitoring 
 
 # AWS Shield 
 
 AWS Shield is managed DDos protection service that safeguards applications running on AWS 
 
-DDoS - A malicious attempt to disrupt normal traffic by flooding a website a larger amount of fake traffic 
+DDoS 
+    
+    - A malicious attempt to disrupt normal traffic by flooding a website a larger amount of fake traffic 
 
 All AWS customers benefit from the automatic protections of AWS Shield Standard, at no additional charge 
 
 When you route your traffic through Route53 or CloudFront you are using AWS Shield Standard 
 
-Protects you against Layer 3, 4 and 7 attacks - 7 application - 4 Transport - 3 Network 
+Protects you against Layer 3, 4 and 7 attacks 
+    
+    - 7 application - 4 Transport - 3 Network 
 
 Shield Standard - Free 
-For protection against most common DDoS attacks, and access to tools and best practices to build a DDoS resilient architecture 
-Automatically available on all AWS services 
+    
+    For protection against most common DDoS attacks, and access to tools and best practices to build a DDoS resilient architecture 
+    Automatically available on all AWS services 
 
 Shield Advanced - $3000 a year 
-For additional protection against larger and more sophisticated attacks, visibility into attacks and 24x7 access to DDoS experts for complex cases 
+
+    For additional protection against larger and more sophisticated attacks, visibility into attacks and 24x7 access to DDoS experts for complex cases 
 
 Available on 
+
 Route 53 - CloudFront - Elastic Load Balancing - AWS Global Accelerator - Elastic IP 
 
 # Penetration Testing 
 
+PenTesting - An authorized simulated cyberattack on a computer system, performed to evaluate the security of the system 
+
+Permitted Services
+
+    EC2 -NAT Gateways - ELB - RDS - CloudFront - Aurora - API Gateways - AWS Lambda and Lambda@Edge - Lightsail resources - Elastic Beanstalk environments 
+
+Prohibited Activities 
+    
+    DNS zone walking via Route 53 Hosted Zones - DDoS attacks - Port flooding - Protocol flooding - Request flooding
+
+For other simulated events, you will need to submit a request to AWS - Reply could take up to 7 days  
+
+# Amazon Guard Duty 
+
+IDS/IPS - Intrusion Detection System, Intrusion Protection System - A device/software application that monitors a network or systems for malicious activity or policy violations
+
+Guard Duty is a threat detection service that continuously monitors for malicious, suspicious activity and unauthorized behaviour. It uses Machine Learning to analyze the following AWS logs 
+    
+    CloudTrail Logs 
+    VPC Flow Logs
+    DNS Logs 
+    
+It will alert you of Findings which you can automate a incident response via CloudWatch Events or with 3rd Party Services 
+
+# Key Management Systems 
+
+A managed service that makes it easy for you to create and control the encryption keys used to encrypt your data 
+    
+    KMS is a multi-tenant HSM (Hardware Security Module)
+    Many AWS services are integrated to use KMS to encrypt your data with a simple checkbox
+    KMS uses Envelope Encryption 
+    
+Envelope Encryption 
+    
+    When you encrypt your data, your data is protected but you have to protect your encryption key. When you encrpty your data key with a master key as an additional layer of security 
+    
+    KMS -> Master Key -> Envelope -> Data Key -> Database 
+
+# Amazon Macie 
+
+
+mMcie is a fully managed service that continuously monitors S3 data access activity for anomalies, and generates detailed alerts when it detects risk of unauthorized access or inadvertent data leaks
+
+
+Macie works by using machine learning to analyse your cloud trail logs 
+
+Macie will identify your most at risk users which could lead to a compromise 
+
+Macie has a variety of alerts
+    
+    Anonymize Access
+    location anomaly
+    Config Compliance
+    Open Permissions
+    Credential Loss
+    Privilege Escalation
+    Data Compliance
+    Ransomware
+    File Hosting 
+    Service disruption
+    Identity Enumeration
+    Suspicious Access
+    Information Loss 
+
+# Security Groups vs NACLs
+
+Security Groups 
+    
+    Acts as a firewell at the instance level 
+    Implicitly denies all traffic - You allow rules 
+    Allow an EC2 Instance access on port 22 for SSH
+    
+NACLs - Network Access Control List 
+    
+    Acts as a firewall at the subnet level 
+    You create Allow and Deny rules
+    Block a specific IP address known for abuse 
+
+# AWS VPN 
+
+Lets you establish a secure and private tunnel from your network or device to the AWS global network 
+
+AWS Site to Site VPN
+    
+    Securely connect on-premise network or branch office site to VPC 
+
+AWS Client VPN
+    
+    Securely connect users to AWS or on-premises netowrks 
+    
+    
+# Elastic Transcoder vs Media Convert 
+
+Both services transcode videos 
+
+Elastic Transcoder - Old way - Transcode videos to streaming formats
+
+AWS Elemental MediaConvert - New way - Transcode videos to streaming formats - Overlays Images - inserts video clips - Extracts captions data - Robust UI 
+
+
+# SNS vs SQS
+
+Both connect apps via messages 
+
+Simple Notifications Service
+    
+    Sends notification to subscribe of topics via multiple protocols - Http, Email, SQS, SMS
+    SNS is generally used for sending plain text emails which is triggered via other AWS Services. The best example of this is billing alarms 
+    Can retry sending in case of failiure for HTTPS
+    Really good for webhooks, simple internal emails, triggering lambda functions
+    
+Simple Queue Service
+    
+    Places messaged into a queue. Applications pull queue using AWS SDK 
+    Can retain a message for up to 14 days can send them in sequential  order or in parallel
+    Can ensure only one message is sent 
+    Can ensure messages are delivered at least once 
+    
+    Really good for delayed tasks, queueing up emails 
+
+
+# AWS inspector vs AWS Trusted Advisor
+
+Both are security tools and they both perform audits 
+
+Amazon Inspector
+    
+    Audits a single EC2 instance that you've selected
+    Generates a report from a long list of security checks
+
+trusted Advisor 
+    
+    Trusted Advisor doesnt generate out a PDF report 
+    Gives you a holistic view of recommendations across multiple services and best practices 
+    e.g.
+    You have open ports on these security groups 
+    You should enable MFA on your root account when using trusted advisor 
 
 
 
+# ALB vs NLB vs CLB
 
+Application Load Balancer 
+    
+    Layer 7 Requests
+    HTTP and HTTPS traffic
+    Routing Rules, more usability from one load balancer 
+    Can attach a WAF (Web Application Firewall)
+    Can attached Amazon Certificate Manager SSL Certificate
+    
+Network Load Balancer 
+    
+    Layer 4 IP protocol data
+    TCP and TLS traffic where extreme performance is required
+    Capable of handling millions of requests per second while maintaining ultra-low latencies
+    Optimized for sudden and volatile traffic patterns while using a single static IP address per Availability Zone 
+    Can attached Amazon Certificate Manager SSL Certificate
 
+Classic Load Balancer 
+    
+    Layer 4 and layer 7
+    Intended for applications that were built within the EC2-Classic network 
+    Can attached Amazon Certificate Manager SSL Certificate
 
+# SNS vs SES 
 
+They both send email
 
+Simple Notifications Service - Practical and Internal 
+    
+    Sends notification to subscribe of topics via multiple protocols - Http, Email, SQS, SMS
+    SNS is generally used for sending plain text emails which is triggered via other AWS Services. The best example of this is billing alarms 
+    Alot of services can trigger SNS for notifications
+    Topics and Subsriptions regardeding SNS 
+    
+Simple Email Service - Professional, Marketing, Email
+    A cloud based email service - SendGrid
+    SES sends HTML Emails, SNS cannot
+    SES can receive inbound emails
+    SES can create Email Templates
+    Custom domain name email 
+    Monitor your email reputation 
+    
+    
+# Artifact vs Inspector 
 
+Both Artifact and Inspector compile out PDFs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Artifact
+    
+    Generates a security report that's based on global compliance frameworks such as:
+    Service Organization Control 
+    Payment Card Industry 
+    
+    
+Inspector 
+    
+    Runs a script that analyzes your EC2 instance, then generates a PDF report telling you which security checks passed
+    Is a Audit tool for security of EC2 instances     
 
 
 
